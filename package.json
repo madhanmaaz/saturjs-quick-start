@@ -1,0 +1,19 @@
+{
+  "name": "saturjs-quick-start",
+  "version": "1.0.0",
+  "description": "saturjs-quick-start",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon -e .html,.css,.js ."
+  },
+  "author": "madhanmaaz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "saturjs": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
