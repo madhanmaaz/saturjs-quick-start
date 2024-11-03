@@ -4,14 +4,14 @@
   "description": "saturjs-quick-start",
   "main": "server.js",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon -e .html,.css,.js ."
+    "start": "node . --prod",
+    "build": "node . --prod",
+    "dev": "nodemon -e .html,.css,.js . --dev"
   },
   "author": "madhanmaaz",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0",
-    "saturjs": "^1.0.0"
+    "saturjs": "^1.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"

@@ -1,0 +1,24 @@
+<style>
+    .Counter h2 {
+        font-size: 2rem;
+    }
+</style>
+<template>
+    <div class="Counter">
+        <h2>Counter: {{ count }}</h2>
+        <button class="button" onclick="changeValue(1)">Increment</button>
+        <button class="button" onclick="changeValue(-1)">Decrement</button>
+    </div>
+</template>
+
+<script>
+    var state = defProxy({
+        count: 0
+    })
+
+    defEvents({
+        changeValue(e, value) {
+            state.count += value
+        }
+    })
+</script>

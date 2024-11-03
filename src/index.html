@@ -1,3 +1,13 @@
+<import src="./Counter.html" />
+
+<script server>
+    const systemInfo = {
+        platform: process.platform,              // OS Platform (e.g., 'linux', 'win32', 'darwin')
+        architecture: process.arch,              // CPU architecture (e.g., 'x64', 'arm')
+        nodeVersion: process.version,            // Node.js version
+        saturjs: 'v1.0.2'
+    }
+</script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,11 +80,11 @@
     <div>
         <img src="/logo.webp" alt="">
         <h1>SaturJs</h1>
-        {{@./Counter()}}
+        {{ $$.Counter() }}
         <a href="https://saturjs.netlify.app/">https://saturjs.netlify.app/</a>
 
         <section>
-            {{for value, key in systemInfo }}
+            {{ for(value, key in systemInfo) }}
             <span>{{ key.toUpperCase() }} : {{ value }}</span>
             {{/}}
         </section>
