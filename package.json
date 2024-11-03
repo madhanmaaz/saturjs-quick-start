@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node . --prod",
-    "build": "node . --prod",
+    "build": "node . --build",
     "dev": "nodemon -e .html,.css,.js . --dev"
   },
   "author": "madhanmaaz",
