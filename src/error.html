@@ -1,0 +1,111 @@
+<script server>
+    const http = require("http")
+    const isDev = process.env.NODE_ENV === "development"
+
+    async function defServer(err, req, res, next) {
+        const status = err.status || 500
+        const title = http.STATUS_CODES[status]
+
+        return {
+            status,
+            title,
+            err
+        }
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ status }} - {{ title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto Mono", monospace;
+            transition: .2s all ease-in-out;
+            scrollbar-width: thin;
+        }
+
+        body {
+            background: #0c1012;
+            width: 100%;
+            max-width: 1500px;
+            color: #c4d5d7;
+            height: 100vh;
+            margin: auto;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .container .head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        span {
+            width: 2px;
+            height: 40px;
+            background: #e5e5e55a;
+        }
+
+        .error {
+            border-radius: 4px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .error .error-info {
+            background: #293133;
+            padding: .5rem;
+        }
+
+        .error .error-info .name {
+            text-align: center;
+            padding: .5rem;
+            background: #192123;
+            margin-bottom: .5rem;
+            display: block;
+        }
+
+        .error .stack {
+            background-color: #192123;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head">
+            <h1>{{ status }}</h1>
+            <span></span>
+            <p>{{ title }}</p>
+        </div>
+
+        {{if (isDev) }}
+        <div class="error">
+            <div class="error-info">
+                <div class="name">{{err.name}}</div>
+                <pre class="message">{{err.message}}</pre>
+            </div>
+            <pre class="stack">{{err.stack}}</pre>
+        </div>
+        {{/}}
+    </div>
+
+</body>
+
+</html>
